@@ -1,0 +1,19 @@
+
+  <div class="card mb-5 mb-lg-0">
+    <div class="card-body">
+      <h5 class="card-title text-muted text-uppercase text-center">{{card.tiername}}</h5>
+      <h6 class="card-price text-center">${{card.price}}<span class="period">/month</span></h6>
+      <hr>
+      <ul class="fa-ul">
+        <li *ngFor="let feature of card.features">
+            <div *ngIf="feature.availability; else notAvail">
+                <span class="fa-li"><fa-icon [icon]="faCheck"></fa-icon></span>{{feature.featurename}}
+            </div>
+            <ng-template #notAvail>
+                <span class="fa-li"><fa-icon [icon]="faTimes"></fa-icon></span><div class="text-muted">{{feature.featurename}}</div>
+            </ng-template>
+        </li>
+      </ul>
+      <button href="#" class="btn btn-block btn-primary text-uppercase" [disabled]="card.buttonStatus">Subscribe</button>
+    </div>
+  </div>
